@@ -1,2 +1,3 @@
 #Minheap Prim Algorithm {Result Image}
-![.](./prim.png)
+
+![.](./prim.PNG)
