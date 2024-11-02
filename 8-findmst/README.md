@@ -1,5 +1,3 @@
 #Quick-Minheap Kruskal Algorithm {Result Image} 
 
-![.](./Quick.PNG)       
-
-![.](./MinHeap.PNG)
+![.](./Quick.PNG)      ![.](./Minheap.PNG)
