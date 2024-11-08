@@ -1,3 +1,3 @@
-#Quick-Minheap Kruskal Algorithm {Result Image}
+#Dijkstra (Matrix) Algorithm {Result Image}
 
 ![.](./dijkstra.png)
