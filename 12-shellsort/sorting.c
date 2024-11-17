@@ -20,7 +20,7 @@ int gap_insertion_sort(int list[], int first, int last, int gap, int *moveCount)
 	int i = 0, j, key, count = 0;
 
 	for (i = first+gap; i <= last; i += gap) {
-		key = list[i];	// 현재 삽입할 값을 key에 저장
+		key = list[i];	// 현재 삽입할 ���을 key에 저장
 		(*moveCount)++; // key에 값을 넣는 행위
 		for (j = i - gap; j >= first ; j -= gap) {
 			count++; // 비교 횟수 증가
@@ -54,13 +54,12 @@ void doShellSort(int list[], int n, int *comparisonCount, int *moveCount) {
 
 void doInsertionSort(int list[], int n, int *comparisonCount, int *moveCount) {
 	int i, j, key;
-	int totalComparisonCount = 0;		
-	int totalMoveCount = 0;
 
-	for (int k = 0; k < 20; k++) { // 20번 반복 -----> 얼만큼 하란 말이 없고, 왠만큼 정렬된것같아서 그대로 사용
+	*comparisonCount = 0; // 비교 횟수 초기화
+	*moveCount = 0; // 이동 횟수 초기화
+
+	for (int k = 0; k < 20; k++) { // 20번 반복
 		generateRandomNumbers(list);
-		*comparisonCount = 0; // 비교 횟수 초기화
-		*moveCount = 0; // 이동 횟수 초기화
 		for (i = 1; i < n; i++) {
 			key = list[i]; // 현재 삽입할 값 저장
 			(*moveCount)++; // key에 값을 넣는 행위
@@ -76,10 +75,8 @@ void doInsertionSort(int list[], int n, int *comparisonCount, int *moveCount) {
 			list[j + 1] = key; // 현재 값 삽입
 			(*moveCount)++; // key 값을 최종 위치에 넣는 행위
 		}
-		totalComparisonCount += *comparisonCount; // 비교 횟수 누적시킴
-		totalMoveCount += *moveCount; // 이동 횟수 누적시킴
 	}
-	*comparisonCount = totalComparisonCount / 20; // 평균 비교 횟수
-	*moveCount = totalMoveCount / 20; // 평균 이동 횟수
+	*comparisonCount /= 20; // 평균 비교 횟수
+	*moveCount /= 20; // 평균 이동 횟수
 	print_list(list, MAX_SIZE);	
 }
