@@ -1,3 +1,3 @@
 #Shell_Sort Algorithm {result img}
 
-![.](shellsort_result.png)
+![.](12-shellsort.png)
