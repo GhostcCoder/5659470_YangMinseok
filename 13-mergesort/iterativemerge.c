@@ -82,7 +82,7 @@ void merge(int array[], int left, int mid, int right, int *compareCount, int *mo
     }
 
     // 제시된 출력부
-    if (rounds % 10 == 0 && isFirst == 0 && rounds < 90) { // 10번에 한번만 출력, 총 9번
+    if (rounds % 10 == 0 && isFirst == 0 && rounds < 90) { // 10번에 한번만 출력, **9번 출력이 안되서 조금 수정하였음.. **
         for (int i = 0; i < 10; i++) // 0 ~ 9값
             printf("%3d ", array[i]);
         printf("| ");
