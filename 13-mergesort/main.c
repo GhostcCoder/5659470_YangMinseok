@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
         if (i == 0) {
             printf("Merge Sort Run\n");
-            mergeSort(array, 0, SIZE - 1);
+            doMergeSort(array, 0, SIZE - 1);
             
             printf("Result\n");
             printArray(array, SIZE);
