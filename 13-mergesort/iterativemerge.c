@@ -99,7 +99,7 @@ int min(int x, int y) {
 }
 
 // 반복적 방법- 분할부
-void mergeSort(int array[], int left, int right) {
+void doMergeSort(int array[], int left, int right) {
     int part_size; // 부분 배열 크기
     int left_start; // 각 부분배열 시작 인덱스
 
