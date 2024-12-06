@@ -27,6 +27,7 @@ void printArray(int *array) {
 int partition(int array[], int left, int right, int *compareCount) {
     int pivot = array[right]; // 피벗 값 설정
     int i = left - 1;
+
     for (int j = left; j < right; j++) {
         (*compareCount)++; // 비교 횟수 증가
         if (array[j] <= pivot) {
@@ -61,9 +62,11 @@ int getQuickSortCompareCount(int array[]) {
 // 선형탐색의 평균 비교 횟수 카운트
 float getAverageLinearSearchCompareCount(int array[]) {
     int totalComparisons = 0;
+
     for (int j = 0; j < 100; j++) { // 100번 반복
         int key = rand() % 1000; // 랜덤 키 생성
         int target = array[key]; // 배열에서 키에 해당하는 값 선택
+
         for (int i = 0; i < MAX_SIZE; i++) { // 선형탐색 수행
             totalComparisons++; // 횟수 증가
             if (array[i] == target) break; // 키를 찾으면 루프 종료
@@ -80,12 +83,20 @@ float getAverageBinarySearchCompareCount(int array[]) {
         int key = rand() % 1000; 
         int target = array[key]; 
         int middle;
-        while (low <= high) { // 이진탐색 수행
-            totalComparisons++; // 횟수 증가
+        while (low <= high) {   // 탐색 범위를 계속 줄여도 키를 찾지 못하면, low가 high보다 커짐으로써 루프 종료
             middle = (low + high) / 2;
-            if (key == array[middle]) break; // 키찾으면 루프 종료
-            else if (key > array[middle]) low = middle + 1; // 키가 중간 값보다 크면 오른쪽 탐색
-            else high = middle - 1; // 키가 중간 값보다 작으면 왼쪽 탐색
+
+            //if문을 else if문 하나와 함께 사용하는 경우
+            if (key == array[middle])   {   
+                totalComparisons++;     // B
+                break;  // 키찾으면 루프 종료
+            } else if (key > array[middle]) {
+                totalComparisons++;     // C
+                low = middle + 1; // 키가 중간 값보다 크면, 최저를 middle값+1로 설정하여 절반 왼쪽 안봄(오른쪽 탐색)
+            } else  {
+                totalComparisons++;     // D
+                high = middle - 1; // 키가 중간 값보다 작으면, 최고를 middle-1로 설정하여 절반 오른쪽 안봄(왼쪽 탐색)
+            }
         }
     }
     return (float)totalComparisons / 100; // 비교 횟수 반환
